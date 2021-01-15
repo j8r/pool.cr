@@ -1,0 +1,9 @@
+name: pool
+version: 0.1.0
+
+authors:
+  - Julien Reichardt <contact@jrei.ch>
+
+description: A simple thread-safe generic pool.
+
+license: ISC
