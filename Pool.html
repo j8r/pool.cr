@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.34.0">
+<meta name="crystal_docs.project_version" content="master">
+<meta name="crystal_docs.project_name" content="pool">
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="pool">
+  <title>Pool(T) - pool master</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          pool
+        </a>
+      </h1>
+
+      <span class="project-version">
+        master
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" current" data-id="pool/Pool" data-name="pool(t)">
+      <a href="Pool.html">Pool</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Pool(T)
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="Pool.html">Pool(T)</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>A simple thread-safe generic pool.</p>
+
+<p>A pool can be used to store resources that are expensive to create (like connections).
+<a href="https://en.wikipedia.org/wiki/Pool_(computer_science" target="_blank">See here</a>) for more explanations.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&quot;pool&quot;</span>
+
+pool <span class="o">=</span> <span class="t">Pool</span>.<span class="k">new</span> { <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span> }
+pool.get <span class="k">do</span> <span class="o">|</span>resource<span class="o">|</span>
+  <span class="c"># do something</span>
+<span class="k">end</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L14" target="_blank">
+        pool.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(initial_capacity:Int=0,&block:-%3ET)-class-method" class="signature"><strong>.new</strong>(initial_capacity : Int = <span class="n">0</span>, &block :  -> T)</a>
+        
+          <div class="summary"><p>Creates a new Pool.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#add(resource:T):Nil-instance-method" class="signature"><strong>#add</strong>(resource : T) : Nil</a>
+        
+          <div class="summary"><p>Adds a resource.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get:T-instance-method" class="signature"><strong>#get</strong> : T</a>
+        
+          <div class="summary"><p>Gets a resource.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get(&:T-%3E):Nil-instance-method" class="signature"><strong>#get</strong>(& : T -> ) : Nil</a>
+        
+          <div class="summary"><p>Gets an resource, yields, then adds it back.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#idle_size:Int32-instance-method" class="signature"><strong>#idle_size</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the pool's idle size.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#resize(new_size:Int32,&:T-%3E):Nil-instance-method" class="signature"><strong>#resize</strong>(new_size : Int32, & : T -> ) : Nil</a>
+        
+          <div class="summary"><p>Resizes the pool to match the new <code><a href="Pool.html#total_size:Int32-instance-method">#total_size</a></code>, and yields each deleted resource on size shrinking.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#resize(new_size:Int32):Nil-instance-method" class="signature"><strong>#resize</strong>(new_size : Int32) : Nil</a>
+        
+          <div class="summary"><p>Resizes the pool to match the new size</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#total_size:Int32-instance-method" class="signature"><strong>#total_size</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the pool's total size.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#used_size:Int32-instance-method" class="signature"><strong>#used_size</strong> : Int32</a>
+        
+          <div class="summary"><p>Returns the pool's used resources size.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(initial_capacity:Int=0,&block:->T)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(initial_capacity : Int = <span class="n">0</span>, &block :  -> T)
+
+        <a class="method-permalink" href="#new(initial_capacity:Int=0,&block:-%3ET)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a new Pool.</p>
+
+<pre><code><span class="k">require</span> <span class="s">&quot;pool&quot;</span>
+
+<span class="t">Pool</span>.<span class="k">new</span> { <span class="t">IO</span><span class="t">::</span><span class="t">Memory</span>.<span class="k">new</span> }</code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="add(resource:T):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>add</strong>(resource : T) : Nil
+
+        <a class="method-permalink" href="#add(resource:T):Nil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Adds a resource.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L45" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get:T-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong> : T
+
+        <a class="method-permalink" href="#get:T-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Gets a resource.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L56" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(&:T->):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(& : T -> ) : Nil
+
+        <a class="method-permalink" href="#get(&:T-%3E):Nil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Gets an resource, yields, then adds it back.</p>
+
+<p>Note that if an exception was raised in the block, the resource won't be added back.
+This behavior is used to prevent adding an invalid resource, for example a connection causing an IO error.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L64" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="idle_size:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>idle_size</strong> : Int32
+
+        <a class="method-permalink" href="#idle_size:Int32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the pool's idle size.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L82" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="resize(new_size:Int32,&:T->):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>resize</strong>(new_size : Int32, & : T -> ) : Nil
+
+        <a class="method-permalink" href="#resize(new_size:Int32,&:T-%3E):Nil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Resizes the pool to match the new <code><a href="Pool.html#total_size:Int32-instance-method">#total_size</a></code>, and yields each deleted resource on size shrinking.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L92" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="resize(new_size:Int32):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>resize</strong>(new_size : Int32) : Nil
+
+        <a class="method-permalink" href="#resize(new_size:Int32):Nil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Resizes the pool to match the new size</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L112" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="total_size:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>total_size</strong> : Int32
+
+        <a class="method-permalink" href="#total_size:Int32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the pool's total size.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L87" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="used_size:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>used_size</strong> : Int32
+
+        <a class="method-permalink" href="#used_size:Int32-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the pool's used resources size.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/j8r/pool.cr/blob/c5c68b1478afd6d86046b77528ea80159b85e290/src/pool.cr#L77" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
